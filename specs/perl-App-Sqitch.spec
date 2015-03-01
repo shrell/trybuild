@@ -144,7 +144,7 @@ MySQL connector for App::Sqitch Perl Module
 
 
 %changelog
-* Sat Feb 28 2015 Jean-Michel REY <vreb87@gmail.com> 0.999-4
+* Sat Feb 28 2015 Jean-Michel REY <vreb87@gmail.com> 0.999-5
 - mysql en minuscules
 
 * Sat Feb 28 2015 Jean-Michel REY <vreb87@gmail.com> 0.999-4
