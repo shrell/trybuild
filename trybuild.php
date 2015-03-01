@@ -5,6 +5,10 @@ chdir(__DIR__);
 $thisdir = rtrim(__DIR__, '/');
 
 
+if(!is_dir('buildresult')) {
+	mkdir('buildresult');
+}
+
 function system_exception($pCmd) {
 	$ret = system($pCmd, $returnVal);
 	if($returnVal != 0) {
