@@ -5,7 +5,7 @@ chdir(__DIR__);
 $thisdir = rtrim(__DIR__, '/');
 
 
-function system_transaction($pCmd) {
+function system_exception($pCmd) {
 	$ret = system($pCmd, $returnVal);
 	if($returnVal != 0) {
 		throw new Exception("$pCmd exited with non zero ($returnVal) value");
@@ -31,11 +31,11 @@ foreach($specFiles as $specFile) {
 		}
 		
 		try {
-			system_transaction('find  "intermediates/'.$packageName.'" -type f -name "*" -exec rm "{}" \;');
-			system_transaction('find  "buildresult/" -type f -name "*" -exec rm "{}" \;');
+			system_exception('find  "intermediates/'.$packageName.'" -type f -name "*" -exec rm "{}" \;');
+			system_exception('find  "buildresult/" -type f -name "*" -exec rm "{}" \;');
 			
-			system_transaction('mock -q --buildsrpm --sources "'.__DIR__.'/sources/" --resultdir "'.__DIR__.'/buildresult/" --spec "'.__DIR__.'/'.$specFile.'"');
-			system_transaction('find "buildresult/" -type f -name "*.src.rpm" -exec mv "{}" "intermediates/'.$packageName.'" \;');
+			system_exception('mock -q --buildsrpm --sources "'.__DIR__.'/sources/" --resultdir "'.__DIR__.'/buildresult/" --spec "'.__DIR__.'/'.$specFile.'"');
+			system_exception('find "buildresult/" -type f -name "*.src.rpm" -exec mv "{}" "intermediates/'.$packageName.'" \;');
 			
 			file_put_contents('intermediates/'.$packageName.'/spec.md5', $specMd5);
 			echo "\tOK\n";
@@ -139,14 +139,14 @@ do {
 			echo "building Binary for ".$packageName." ... \n";
 			
 			try {
-				system_transaction('find  "rpms/'.$packageName.'" -type f -name "*" -exec rm "{}" \;');
-				system_transaction('find  "buildresult/" -type f -name "*" -exec rm "{}" \;');
+				system_exception('find  "rpms/'.$packageName.'" -type f -name "*" -exec rm "{}" \;');
+				system_exception('find  "buildresult/" -type f -name "*" -exec rm "{}" \;');
 			
-				system_transaction('mock -q --rebuild --resultdir "'.__DIR__.'/buildresult/" "'.__DIR__.'/'.$srpm.'"');
+				system_exception('mock -q --rebuild --resultdir "'.__DIR__.'/buildresult/" "'.__DIR__.'/'.$srpm.'"');
 				
-				system_transaction('find "buildresult/" -type f -name "*.rpm" -exec mv "{}" "rpms/'.$packageName.'" \;');
+				system_exception('find "buildresult/" -type f -name "*.rpm" -exec mv "{}" "rpms/'.$packageName.'" \;');
 				
-				system_transaction('createrepo rpms');
+				system_exception('createrepo rpms');
 				
 				$specMd5 = md5_file('specs/'.$packageName.'.spec');
 				file_put_contents('rpms/'.$packageName.'/spec.md5', $specMd5);
