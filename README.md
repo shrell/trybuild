@@ -23,7 +23,7 @@ Here are the basic steps :
 	* Place your *.spec files in specs/ directory
 	* Place source files (*.tar.gz, *.bz2 etc...) in sources/ directory
 	* If any, also place patch files in sources/ directory
-	* ./buildsrpms.php
+	* ./trybuild.php
 	* if you encounter any error during build, read the logs found in rpms/PACKAGE_NAME/*.log, especially the last lines which likely will point to the error
 	* try to correct errors by patching / modifying the specs / adding packages to the list
 	* rinse and repeat
