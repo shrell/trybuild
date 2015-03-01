@@ -27,3 +27,4 @@ Here are the basic steps :
 	* if you encounter any error during build, read the logs found in rpms/PACKAGE_NAME/*.log, especially the last lines which likely will point to the error
 	* try to correct errors by patching / modifying the specs / adding packages to the list
 	* rinse and repeat
+	
