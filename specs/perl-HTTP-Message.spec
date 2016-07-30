@@ -1,6 +1,6 @@
 Name:           perl-HTTP-Message
 Version:        6.06
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        HTTP style message (base class)
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -47,7 +47,7 @@ following methods are available:
 %setup -q -n HTTP-Message-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+%{__perl} Makefile.PL INSTALLDIRS=site
 make %{?_smp_mflags}
 
 %install
@@ -72,10 +72,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc Changes README
-%{perl_vendorlib}/*
+%{perl_sitelib}/*
 #%{_mandir}/man3/*
 
 %changelog
+* Fri Jul 29 2016 Jean-Michel REY <vreb87@gmail.com> 6.06-4
+- passe dans le dossier perl/site
+
 * Sat Feb 28 2015 Jean-Michel REY <vreb87@gmail.com> 6.06-3
 - supprime les fichiers de manuel, en conflit avec perl-libwww-perl-5.833-2.el6.noarch
 

@@ -1,6 +1,6 @@
 Name:           perl-HTTP-Date
 Version:        6.02
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Date conversion routines
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -23,7 +23,7 @@ str2time(), are exported by default.
 %setup -q -n HTTP-Date-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+%{__perl} Makefile.PL INSTALLDIRS=site
 make %{?_smp_mflags}
 
 %install
@@ -48,10 +48,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc Changes README
-%{perl_vendorlib}/*
+%{perl_sitelib}/*
 #%{_mandir}/man3/*
 
 %changelog
+* Fri Jul 29 2016 Jean-Michel REY <vreb87@gmail.com> 6.02-3
+- passe dans le dossier perl/site
+
 * Sat Feb 28 2015 Jean-Michel REY <vreb87@gmail.com> 6.02-2
 - supprime les fichiers de manuel, en conflit avec perl-libwww-perl-5.833-2.el6.noarch
 

@@ -146,7 +146,7 @@ do {
 				system_exception('find  "rpms/'.$packageName.'" -type f -name "*" -exec rm "{}" \;');
 				system_exception('find  "buildresult/" -type f -name "*" -exec rm "{}" \;');
 			
-				system_exception('mock -q --rebuild --resultdir "'.__DIR__.'/buildresult/" "'.__DIR__.'/'.$srpm.'"');
+				system_exception('mock -r epel-6-i386 -q --rebuild --resultdir "'.__DIR__.'/buildresult/" "'.__DIR__.'/'.$srpm.'"');
 				
 				system_exception('find "buildresult/" -type f -name "*.rpm" -exec mv "{}" "rpms/'.$packageName.'" \;');
 				

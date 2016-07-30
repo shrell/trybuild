@@ -1,6 +1,6 @@
 Name:           perl-HTML-Form
 Version:        6.03
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Class that represents an HTML form element
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -32,7 +32,7 @@ passed to the request() method of LWP::UserAgent.
 %setup -q -n HTML-Form-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+%{__perl} Makefile.PL INSTALLDIRS=site
 make %{?_smp_mflags}
 
 %install
@@ -58,9 +58,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc Changes README
-%{perl_vendorlib}/*
+%{perl_sitelib}/*
 
 %changelog
+* Fri Jul 29 2016 Jean-Michel REY <vreb87@gmail.com> 6.03-4
+- passe dans le dossier perl/site
+
 * Sat Feb 28 2015 Jean-Michel REY <vreb87@gmail.com> 6.03-3
 - supprime les fichiers de manuel, en conflit avec perl-libwww-perl-5.833-2.el6.noarch
 
